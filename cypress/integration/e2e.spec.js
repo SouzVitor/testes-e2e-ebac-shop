@@ -36,9 +36,9 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
                 .contains('Autumn Pullie')
                 .click()
         
-            });
+         
         
-            it('Deve adicionar produtos ao carrinho', () => {
+            // Deve adicionar produtos ao carrinho'
                 var quantidade = 4
                 
                 cy.visit('produtos/page/2/')
@@ -54,11 +54,9 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
                 cy.get('.woocommerce-message > .button').click()
                 cy.get('.checkout-button').click()
 
-            }),
-
-                           
+                                      
         
-            it('Preenchendo todas opções no checkout', () => {
+            // 'Preenchendo todas opções no checkout'
 
                     let nomefaker = faker.name.firstName()
                     let sobrenomefaker = faker.name.lastName()
@@ -80,16 +78,13 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
                     
                     
                     
-            it('validando minha compra ao final', () => {  
+            // 'validando minha compra ao final'
 
                     cy.get('#payment_method_cod').click()
                     cy.get('#terms').click()
                     cy.get('#place_order').click()
         
-                });   
+               });   
             
-
-            });           
-                    
-        });
-    });
+            });
+        });              
