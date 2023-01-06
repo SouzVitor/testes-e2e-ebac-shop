@@ -39,22 +39,16 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
          
         
             // Deve adicionar produtos ao carrinho'
-                var quantidade = 4
-                
+                                
                 cy.visit('produtos/page/2/')
-                cy.get('[class="product-block grid"]')
-                .contains('Autumn Pullie').click()
-                cy.get('.button-variable-item-XS').click()
-                cy.get('.button-variable-item-Red').click()
-                cy.get('.input-text').clear().type(quantidade)
-                cy.get('.single_add_to_cart_button').click()
-                                        
+                var quantidade = 4
+                cy.addProdutos('Atlas Fitness Tank', 'M', 'Blue', 4)
+
                 cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantidade)
-                cy.get('.woocommerce-message').should('contain', quantidade + ' × “Autumn Pullie” foram adicionados no seu carrinho.')
+                cy.get('.woocommerce-message').should('contain', quantidade + ' × “Atlas Fitness Tank” foram adicionados no seu carrinho.')
                 cy.get('.woocommerce-message > .button').click()
                 cy.get('.checkout-button').click()
-
-                                      
+                                                      
         
             // 'Preenchendo todas opções no checkout'
 
@@ -75,7 +69,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
                     cy.get('#billing_postcode').type(cep) 
                     cy.get('#billing_phone').type(telefone)
                     cy.get('#billing_email').type(emailFaker)
-                    
+                                     
                     
                     
             // 'validando minha compra ao final'
