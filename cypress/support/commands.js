@@ -27,17 +27,19 @@
 
 Cypress.Commands.add('login', (usuario, senha) => {
     cy.get('#username').type(usuario)
-    cy.get('#password').type(senha, {log: false})
+    cy.get('#password').type(senha, { log: false })
     cy.get('.woocommerce-form > .button').click()
 });
 
 Cypress.Commands.add('addProdutos', (produto, tamanho, cor, quantidade) => {
     cy.get('[class="product-block grid"]')
-    .contains(produto).click()
-    cy.get('.button-variable-item-'+ tamanho).click()
-    cy.get('.button-variable-item-'+ cor).click()
+        .contains(produto).click()
+    cy.get('.button-variable-item-' + tamanho).click()
+    cy.get('.button-variable-item-' + cor).click()
     cy.get('.input-text').clear().type(quantidade)
     cy.get('.single_add_to_cart_button').click()
+    cy.get('.woocommerce-message').should('contain', '× “Atlas Fitness Tank” foram adicionados no seu carrinho.')
+    cy.get('.woocommerce-message > .button').click()
+    cy.get('.checkout-button').click()
 
-})
-
+});
