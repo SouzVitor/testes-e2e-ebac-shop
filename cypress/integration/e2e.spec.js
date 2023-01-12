@@ -61,6 +61,8 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             cy.get('#terms').click()
             cy.get('#place_order').click()
 
+            cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
+
         });
 
     });
